@@ -1,0 +1,33 @@
+from django.urls import path
+from app import views
+
+urlpatterns = [
+    path('perfil', views.app_perfil, name='perfil'),
+    path('perfil/id/<int:perfil_amigo>',
+         views.app_perfil_id, name='perfil_id'),
+    path('auth/users', views.app_auth, name='auth_user'),
+    path('auth/logout', views.cerrar_sesion, name='logout'),
+    path('auth/send/post', views.app_send_post, name='send_post'),
+    path('auth/delete/post/<int:publicacion_id>',
+         views.app_delete_post, name='delete_post'),
+    path('auth/send/request/<int:perfil_id_request>',
+         views.app_send_request, name='send_request'),
+    path('auth/send/comment', views.app_send_comment, name='send_coments'),
+    path('auth/update/like', views.app_update_like, name='update_like'),
+    path('auth/drop/request/<int:perfil_id_request>',
+         views.app_drop_request, name='drop_request'),
+    path('auth/cancel/request/<int:perfil_id_request>',
+         views.app_cancel_request, name='cancel_request'),
+    path('auth/insert/amigo/<int:perfil_id_request>',
+         views.app_insert_amigo, name='insert_amigo'),
+    path('auth/drop/amigo/<int:perfil_id_request>',
+         views.app_drop_amigo, name='drop_amigo'),
+    path('inicio', views.app_feed, name='inicio'),
+    path('search_user', views.app_search_user, name='search_user'),
+    path('perfil/id/search_user', views.app_search_user, name='search_user'),
+    path('search_request', views.app_search_request, name='search_request'),
+    path('auth/update/perfil', views.app_update_perfil, name='update_perfil'),
+    path('auth/update/foto', views.app_update_foto, name='update_foto'),
+    path('auth/update/foto/perfil', views.app_update_foto_portada,
+         name='update_foto_portada'),
+]

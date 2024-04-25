@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href='{% static "css/style.css" %}' rel="stylesheet">
+</head>
+
+<body class="bg-gradient">
+    <section class="container">
+        <form class="row justify-content-center align-items-center vh-100" method="POST" action="{% url "signup_users" %}" > {% csrf_token %}
+            <div class="col-md-5 bg-white py-4 rounded-3">
+                <h2 class="d-flex justify-content-center">Registro</h2>
+                <div class="row m-1">
+                    <div class="col-md-6">
+                        <label for="fname">Nombre * </label>
+                        <input type="text" class="form-control" placeholder="John" name="fname" id="" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="sname">Apellido * </label>
+                        <input type="text" class="form-control" placeholder="Doe" name="sname" id="" required>
+                    </div>
+                </div>
+                <div class="row m-1">
+                    <div class="col-md-12">
+                        <label for="email">Correo Electronico * </label>
+                        <input type="email" class="form-control" placeholder="correo@mail.com" id="email" name="email" required>
+                        <div id="error-message-email"></div>
+                    </div>
+                </div>
+                <div class="row m-1">
+                    <div class="col-md-12">
+                        <label for="password">Contraseña * </label>
+                        <input type="password" class="form-control" placeholder="******" name="password" required>
+                    </div>
+                </div>
+                <div class="row m-1">
+                    <div class="col-md-6">
+                        <label for="dbirth">Fecha de Nacimiento *</label>
+                        <input type="date" class="form-control" placeholder="Fecha Nacimiento" name="dbirth" id="dbirth" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="relation">Situacion Sentimental</label>
+                        <select name="relation" class="form-control">
+                            <option value="">-</option>
+                            <option value="S">Soltero/a</option>
+                            <option value="C">Casado/a</option>
+                            <option value="R">en una Relacion</option>
+                            <option value="CC">Es Complicado</option>
+                            <option value="D">Divorciado/a</option>
+                        </select>
+                    </div>
+                    <div id="error-message-dbirth"></div>
+                </div>
+                <div class="row m-1">
+                    <div class="col-md-12">
+                        <label for="gender">Género *</label>
+                        <select name="gender" class="form-control" id="" required>
+                            <option value="">-</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                            <option value="O">Otro</option>
+                            <option value="N">No especificar</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-1">
+                    <div class="col-md-12">
+                        <label for="location">Lugar Residencia</label>
+                        <input type="text" class="form-control" placeholder="Av. 16 Guajira con C2 prolongacion" name="location">
+                    </div>
+                </div>
+                <div class="row pt-4">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <button class="btn btn-primary" type="submit" id="registrar">Registrar</button>    
+                    </div>
+                    <div class="row pt-2 m-0">
+                        <div class="col-md-12 d-flex justify-content-center">
+                            <a href="{% url "login" %}">Iniciar Sesión<a>    
+                        </div>
+                    </div>  
+                </div>
+            </div>    
+            
+        </form>
+    </section>
+</body>
+<!-- Enlaza el archivo jQuery desde un servidor externo -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static "js/script.js" %}"></script>
+</html>

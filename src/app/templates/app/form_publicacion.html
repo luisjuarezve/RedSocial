@@ -1,0 +1,13 @@
+  <section>
+    <form action="{% url "send_post" %}" method="POST" enctype="multipart/form-data" class="form-control"> {% csrf_token %}
+        <div class="gap-2 d-flex flex-row justify-content-center">
+          <img src="{{ MEDIA_URL }}{{perfil.8}}" alt="Imagen de perfil" class="rounded-circle" width="50px" height="50px">
+          <textarea class="form-control" type="text" placeholder="¿Que estás pensando {{ perfil.1 }}?" name="contenido" required></textarea>
+        </div>
+        <div class="gap-2 d-flex flex-row justify-content-center mt-2">
+          <input type="hidden" name="next" value="{{ request.path }}"> 
+          <input type="file" class="form-control" aria-label="Foto" accept="image/*" name="imagen">
+          <button class="btn btn-primary" type="submit">Publicar</button>  
+        </div>
+    </form>
+  </section>

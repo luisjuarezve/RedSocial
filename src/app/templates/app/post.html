@@ -1,0 +1,65 @@
+<section>
+  {% for post_item in post %}
+  <div class="card my-4">
+    <div class="p-2 gap-2 d-flex flex-row p-0">
+      <img src="{{ MEDIA_URL }}{{ post_item.3 }}" alt="Imagen de perfil" class="rounded-circle" width="50px" height="50px">
+      <div class="d-flex flex-column container-fluid">
+        <div class="d-flex flex-row justify-content-between">
+          <h5 class="d-flex card-title m-0 align-items-center">{{ post_item.1 }} {{ post_item.2 }}</h5>
+          {% if post_item.9 == perfil.0 %}
+          <form method="post" action="{% url 'delete_post' publicacion_id=post_item.0 %}" >{% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <button type="submit" class="btn btn-danger px-2 fw-bold"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+              <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+            </svg></button>  
+          </form>
+          {% endif %}
+        </div>
+        <p class="card-text"><small class="text-muted">{{ post_item.6 }}</small></p>
+      </div>
+    </div>
+      <div class="card-body">
+        <p class="card-text">{{ post_item.4 }}</p>
+      </div>
+          {% if post_item.5 != ""  %}
+          <img class="card-img-top" src="{{ MEDIA_URL }}{{ post_item.5 }}" alt="Card image cap" style="max-height: 500px; object-fit: cover; object-position: center;">
+          {% endif %}
+          <div class="border-top mt-2 p-2 gap-2 d-flex justify-content-between align-items-first">
+            <form method="post" action="{% url "update_like" %} " >{% csrf_token %}
+              <input type="hidden" name="id_post" value="{{post_item.0}}" >
+              <input type="hidden" name="next" value="{{ request.path }}">
+              {% for status in status_like %}
+                {% if status.0 == post_item.0 and status.1 == perfil_data.0.0 %}
+                  <button type="submit" class="btn btn-primary px-1 fw-bold">Quitar me gusta</button>  
+                {% elif status.0 == post_item.0 and status.1 == False %}
+                  <button type="submit" class="btn btn-primary px-1 fw-bold">Me gusta</button>  
+                {% endif %}
+              {% endfor %}
+            </form>  
+              <div class="gap-2 d-flex justify-content-end align-items-first">
+                <p class="card-text"><small class="text-muted"><strong>{{ post_item.8 }}</strong> Comentarios</small></p>
+                <p class="card-text"><small class="text-muted"><strong>{{ post_item.7 }}</strong> Me gusta</small></p>
+              </div>
+          </div>
+          <div class="m-0 comentarios">
+          <h4 class="text-center">Comentarios</h4>
+            {% for comment in comments %}
+            {% if comment.0 == post_item.0  %}
+            <div class="p-3 m-0 gap-2 d-flex flex-md-row border-bottom border-top">
+              <img src="{{ MEDIA_URL }}{{ comment.3 }}" alt="Imagen de perfil" class="rounded-circle" width="50px" height="50px">
+              <div class="d-flex flex-column col-12">
+                <h5 class="card-title m-0">{{ comment.1 }} {{ comment.2 }}</h5>
+                <p class="card-text"><small class="text-muted">{{ comment.5 }}</small></p>
+                <p class="card-text custom-card-text">{{ comment.4 }}</p>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+          {% include "app/form_comentarios.html" %}
+        </div>
+
+        {% endfor %}
+        
+      </section>

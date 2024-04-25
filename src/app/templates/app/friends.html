@@ -1,0 +1,16 @@
+<div class="gap-2 d-flex flex-md-column justify-content-center my-5">
+    <h4 class="text-center">Amigos</h4>
+    <!--fila 1 de amigos-->
+    <div class="gap-2 d-flex flex-row justify-content-center">
+    {% for amigo in Lista_Amigos %}
+      <!--amigo -->
+      <div class="gap-2 d-flex flex-md-column justify-content-center align-items-center card p-4">
+        <img src="{{ MEDIA_URL }}{{ amigo.8 }}" alt="Imagen de perfil" class="rounded-circle" width="50px" height="50px">
+        <div class="d-flex flex-column align-items-center justify-content-center">
+          <h4 class="d-flex align-items-first">{{ amigo.1 }} {{ amigo.2 }}</h4>
+          <a class="btn btn-sm btn-primary" href="{%url "perfil_id" amigo.0 %}" >ver amigo</a>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+  </div>

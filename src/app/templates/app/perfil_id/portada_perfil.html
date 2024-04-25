@@ -1,0 +1,35 @@
+<section class="container-fluid">
+  <div class="row">
+    <div class="col px-0 portada-container">
+      <img class="img" src="{{ MEDIA_URL }}{{ perfil_a.9 }}" alt="Foto de perfil">
+      </div>
+    </div>
+    <div class="row border-bottom">
+      <div class="col-12 py-2 px-5 d-flex justify-content-end">
+          {% if status_amistad == False %}
+            {% if solicitud == True%}
+                <form class=" align-items-first" action="{% url 'drop_request' perfil_id_request=perfil_a.0 %}" method="POST">{% csrf_token %}
+                  <button type="submit" class="btn btn-danger btn-lg px-4 me-md-2 fw-bold">Rechazar Solicitud</button>
+                </form>
+                <form class=" align-items-first" action="{% url 'insert_amigo' perfil_id_request=perfil_a.0 %}" method="POST">{% csrf_token %}
+                  <button type="submit" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Aceptar Solicitud</button>
+                </form>
+            {% elif status_amistad == False %}
+            {% if solicitud_enviada == True %}
+              <form class="gap-2 d-flex justify-content-end align-items-first" action="{% url 'cancel_request' perfil_id_request=perfil_a.0 %}" method="POST">{% csrf_token %}
+                <button type="submit" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Cancelar Solicitud</button>
+              </form>
+            {% elif solicitud_enviada == False %}
+              <form class="gap-2 d-flex justify-content-end align-items-first" action="{% url 'send_request' perfil_id_request=perfil_a.0 %}" method="POST">{% csrf_token %}
+                <button type="submit" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Agregar amigo</button>
+              </form>
+            {% endif %}
+            {% endif %}  
+          {% elif status_amistad == True %}
+            <form class="gap-2 d-flex justify-content-end align-items-first" action="{% url 'drop_amigo' perfil_id_request=perfil_a.0 %}" method="POST">{% csrf_token %}
+              <button type="submit" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold" id="delete_friend">Es amigo</button>
+            </form>
+          {% endif %}
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,7 @@
+<form action="{% url "update_foto_portada" %}" method="POST" enctype="multipart/form-data" class="form-control"> {% csrf_token %}
+  <h4 class="text-center">Actualizar Foto de Portada</h4>  
+  <div class="gap-2 d-flex flex-row justify-content-center mt-2">
+    <input id="fotoportada" type="file" class="form-control" aria-label="Foto" accept="image/*" name="imagen">
+    <button class="btn btn-primary" type="submit">Actualizar foto de portada</button>  
+  </div>
+</form>

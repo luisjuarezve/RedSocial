@@ -1,0 +1,17 @@
+.bg-gradient {
+    background: rgb(157, 150, 154) !important;
+    background: linear-gradient(90deg, rgba(157, 150, 154, 1) 0%, rgba(105, 4, 255, 1) 71%) !important;
+}
+
+.portada-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    overflow: hidden;
+}
+
+.portada-container .imga {
+    width: 100%;
+    height: auto;
+}

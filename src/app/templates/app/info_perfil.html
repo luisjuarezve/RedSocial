@@ -1,0 +1,48 @@
+<div class="gap-2 d-flex flex-row justify-content-center card p-2">
+  <img src="{{ MEDIA_URL }}{{ perfil.8 }}" alt="Imagen de perfil" class="rounded-circle" width="200px" height="200px">
+  <div class="d-flex flex-column align-items-center justify-content-center gap-2">
+    <h4>{{ perfil.1 }} {{ perfil.2 }}</h4>
+    <button id="Actualizarfotoperfil" class="btn btn-primary">Actualizar foto de perfil</button>  
+    <div class="gap-2 d-flex flex-md-row justify-content-center align-items-center p-2">
+      {% if perfil.4 == "M"  %}
+        <p class="m-0 p-2 card"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-male" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M9.5 2a.5.5 0 0 1 0-1h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.707L9.871 6.836a5 5 0 1 1-.707-.707L13.293 2zM6 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8"/>
+        </svg></p>
+      {% elif perfil.4 == "F"  %}
+        <p class="m-0 p-2 card"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-female" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 1a4 4 0 1 0 0 8 4 4 0 0 0 0-8M3 5a5 5 0 1 1 5.5 4.975V12h2a.5.5 0 0 1 0 1h-2v2.5a.5.5 0 0 1-1 0V13h-2a.5.5 0 0 1 0-1h2V9.975A5 5 0 0 1 3 5"/>
+        </svg></p>
+      {% elif perfil.4 == "O"  %}
+        <p class="m-0 p-2 card"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-neuter" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 1a4 4 0 1 0 0 8 4 4 0 0 0 0-8M3 5a5 5 0 1 1 5.5 4.975V15.5a.5.5 0 0 1-1 0V9.975A5 5 0 0 1 3 5"/>
+        </svg></p>
+      {% elif perfil.4 == "N"  %}
+        <p class="m-0 p-2 card"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ban" viewBox="0 0 16 16">
+          <path d="M15 8a6.97 6.97 0 0 0-1.71-4.584l-9.874 9.875A7 7 0 0 0 15 8M2.71 12.584l9.874-9.875a7 7 0 0 0-9.874 9.874ZM16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0"/>
+        </svg></p>
+      {% endif %}
+
+      {% if perfil.5 == "S"  %}
+        <p class="m-0 p-1 card">Soltero</p>
+      {% elif perfil.5 == "C" %}
+        <p class="m-0 p-1 card">Casado</p>
+      {% elif perfil.5 == "R" %}
+        <p class="m-0 p-1 card">En Relación</p>
+      {% elif perfil.5 == "CC" %}
+        <p class="m-0 p-1 card">Es Complicado</p>
+      {% elif perfil.5 == "D" %}
+        <p class="m-0 p-1 card">Divorciado</p>
+      {% endif %}
+
+      {% if perfil.6 != ""  %}
+      <div class="m-0 p-1">
+        <p class="m-0 p-1 card d-flex flex-row align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+          </svg>{{ perfil.6 }}
+        </p>
+      </div>
+      {% endif %}
+      </div>
+  </div>
+</div>

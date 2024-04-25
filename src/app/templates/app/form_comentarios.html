@@ -1,0 +1,14 @@
+<section>
+  <form action="{% url "send_coments" %} " method="POST"  class="form-control"> {% csrf_token %}
+      <div class="gap-2 d-flex flex-row justify-content-center">
+        <img src="{{ MEDIA_URL }}{{perfil.8}}" alt="Imagen de perfil" class="rounded-circle" width="50px" height="50px">
+        <textarea class="form-control" type="text" placeholder="Agrega un comentarios" name="post_comments" required></textarea>
+      </div>
+      <div class="gap-2 d-flex flex-row justify-content-end mt-2">
+        <input type="hidden" name="id_post" value="{{post_item.0}}" >
+        <input type="hidden" name="next" value="{{ request.path }}">
+          <button class="btn btn-primary" type="submit">Comentar</button>  
+      </div>
+    
+  </form>
+</section>

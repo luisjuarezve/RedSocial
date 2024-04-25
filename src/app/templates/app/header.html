@@ -1,0 +1,50 @@
+<header class="p-3 mb-3 border-bottom">
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
+      <div class="d-flex flex-row">
+        
+        <ul class="nav">
+          <li><a href="{% url "inicio" %}" class="nav-link px-2 link-secondary">Inicio</a></li>
+          <li><a href="{% url "perfil" %}" class="nav-link px-2 link-secondary">Perfil</a></li>
+        </ul>
+        
+        <div class="d-flex flex-column justify-content-center" style="position: relative;">
+            <a href="#" id="mostrarSolicitudes" class="d-flex align-items-center link-link-secondary text-decoration-none nav-link px-3 py-2 link-secondary">
+              <i class="fa-solid fa-bell"></i>
+            </a>
+            <div id="lista_solicitudes" style="width:300px; position:relative; z-index: 9999;">
+              <ul class="form-control m-0 p-0 list-unstyled" id="results_solicitudes" style="position: absolute !important; width: 100%; background: white;">
+                
+              </ul>  
+          </div>
+        </div>
+      
+      </div>
+
+    
+      <div class="d-flex flex-row">
+        <div class="search-container mx-3 p-0" style="position: relative; width: fit-content;">
+          <form class="col-12" role="search" method="GET" action="{% url "search_user" %}" id="search_bar"> {% csrf_token %}
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="search_bar">
+          </form>
+          <div class="lista" style="display: none;">
+            <ul class="form-control m-0 p-0 list-unstyled" id="results" style="position: absolute; width: 100%; background: white;">
+
+            </ul>  
+          </div>
+        </div>
+
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{ MEDIA_URL }}{{ perfil.8}}" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" style="">
+            <li><a class="dropdown-item" href="{% url "inicio" %}">Inicio</a></li>
+            <li><a class="dropdown-item" href="{% url "perfil" %}">Perfil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url "logout" %}">Cerrar Sesión</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </header>
